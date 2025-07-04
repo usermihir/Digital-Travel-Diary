@@ -13,7 +13,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // ✅ A wrapper inside the route to access `useParams`
 const ProtectedRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   return token ? children : <Navigate to="/login" />;
 };
 
