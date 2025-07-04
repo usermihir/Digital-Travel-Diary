@@ -25,7 +25,8 @@ const Login = () => {
           sessionStorage.setItem("user", JSON.stringify(user));
 
           alert("Login successful!");
-          navigate(`/user/${user.id}/dashboard`);
+          const userId = user.id || user._id;
+          navigate(`/user/${userId}/dashboard`);
         } else {
           alert("Login failed. Please try again.");
         }
