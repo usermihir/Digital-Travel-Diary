@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Register.css';
-const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
     const [name, setName] = useState();

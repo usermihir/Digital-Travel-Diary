@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Styles/Login.css'; 
 
-const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
   const [email, setEmail] = useState("");

@@ -6,7 +6,7 @@ import Memories from "../components/Memories";
 import "../Styles/UserMemories.css";
 
 const OPENCAGE_API_KEY = import.meta.env.VITE_OPENCAGE_API_KEY;
-const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 function UserMemories() {
   const [memories, setMemories] = useState([]);

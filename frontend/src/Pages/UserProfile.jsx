@@ -5,7 +5,7 @@ import "../Styles/UserProfile.css";
 import axios from "axios";
 import { FaCamera } from "react-icons/fa";
 
-const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 
 function UserProfile() {

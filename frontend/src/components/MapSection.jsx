@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import "../Styles/MapSection.css";
 import { jwtDecode } from "jwt-decode"; 
-const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 
 const libraries = ["places"];
