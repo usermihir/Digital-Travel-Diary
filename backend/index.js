@@ -10,10 +10,6 @@ const app = express();
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(cors());
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("Connected"))
-  .catch((err) => console.error("MongoDB error:", err));
-
 // Routes
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes); 
