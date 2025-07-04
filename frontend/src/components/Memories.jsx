@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Form, Badge, Modal } from "react-bootstrap";
+import {  Modal } from "react-bootstrap";
 import "../Styles/UserMemories.css";
 
 const OPENCAGE_API_KEY = import.meta.env.VITE_OPENCAGE_API_KEY;
 
 const Memories = ({ memories, trips }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterSentiment, setFilterSentiment] = useState("All");
   const [locationNamesMap, setLocationNamesMap] = useState({});
   const [selectedMemory, setSelectedMemory] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const getSentimentBadge = (sentiment) => {
-    if (sentiment === "positive") return <Badge bg="success">😊 Positive</Badge>;
-    if (sentiment === "negative") return <Badge bg="danger">😞 Negative</Badge>;
-    if (sentiment === "neutral") return <Badge bg="secondary">😐 Neutral</Badge>;
-    return <Badge bg="dark">🤖 Unknown</Badge>;
-  };
 
   const reverseGeocode = async (lat, lng) => {
     try {
@@ -47,14 +39,6 @@ const Memories = ({ memories, trips }) => {
     fetchAllNames();
   }, [trips]);
 
-  const filteredMemories = memories.filter((m) => {
-    const matchesSearch =
-      m.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      m.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesSentiment =
-      filterSentiment === "All" || m.sentiment === filterSentiment.toLowerCase();
-    return matchesSearch && matchesSentiment;
-  });
 
   const handleCardClick = (memory) => {
     setSelectedMemory(memory);

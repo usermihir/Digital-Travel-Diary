@@ -156,7 +156,7 @@ const handleSubmit = async (endTrip = false) => {
     }
 
     // ✅ Save the memory with valid tripId
-    const res = await axios.post(`{API_BASE}/api/memories`, data, {
+    const res = await axios.post(`${API_BASE}/api/memories`, data, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -172,7 +172,7 @@ const handleSubmit = async (endTrip = false) => {
       );
 
       // ✅ Refresh and cleanup
-      const tripsRes = await axios.get(`{API_BASE}/api/trips`, {
+      const tripsRes = await axios.get(`${API_BASE}/api/trips`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -201,10 +201,10 @@ const handleSubmit = async (endTrip = false) => {
 
     try {
       const [memoriesRes, tripsRes] = await Promise.all([
-        axios.get(`{API_BASE}/api/memories/my`, {
+        axios.get(`${API_BASE}/api/memories/my`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get(`{API_BASE}/api/trips`, {
+        axios.get(`${API_BASE}/api/trips`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);
