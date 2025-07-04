@@ -46,111 +46,124 @@ const Memories = ({ memories, trips }) => {
   };
 
   return (
-    <div className="flex-grow-1 overflow-auto">
-            {/* Trip & Memory Section */}
-      <div className="container py-4">
-        <h3 className="text-light mb-4">🧭 Saved Trips</h3>
+   <div className="flex-grow-1 overflow-auto">
+  {/* Trip & Memory Section */}
+  <div className="container py-4">
+    <h3 className="text-light mb-4">
+      <i className="bi bi-compass-fill me-2"></i>Saved Trips
+    </h3>
 
-        {trips.length === 0 ? (
-          <p className="text-muted">No trips found.</p>
-        ) : (
-          trips.map((trip, idx) => {
-            const route = (trip.locationNames || []).join(" → ");
-            const tripMemories = memories.filter(
-              (m) => (m.tripId?._id || m.tripId)?.toString() === trip._id.toString()
-            );
+    {trips.length === 0 ? (
+      <p className="text-muted">No trips found.</p>
+    ) : (
+      trips.map((trip, idx) => {
+        const route = (trip.locationNames || []).join(" → ");
+        const tripMemories = memories.filter(
+          (m) => (m.tripId?._id || m.tripId)?.toString() === trip._id.toString()
+        );
 
-            return (
-              <div
-                className="card bg-dark border border-secondary text-light mb-4 shadow-sm"
-                key={trip._id}
-              >
-                <div className="card-body">
-                  <h5 className="card-title mb-1">
-                    🚀 Trip {idx + 1}: {route}
-                  </h5>
-                  <p className="text-muted small mb-3">
-                    {new Date(trip.createdAt).toLocaleDateString()}
-                  </p>
+        return (
+          <div
+            className="card bg-dark border border-secondary text-light mb-4 shadow-sm"
+            key={trip._id}
+          >
+            <div className="card-body">
+              <h5 className="card-title mb-1">
+                <i className="bi bi-rocket-takeoff-fill me-2"></i>
+                Trip {idx + 1}: {route}
+              </h5>
+              <p className="text-muted small mb-3">
+                <i className="bi bi-calendar3 me-1"></i>
+                {new Date(trip.createdAt).toLocaleDateString()}
+              </p>
 
-                  {tripMemories.length === 0 ? (
-                    <p className="text-muted">No memories for this trip.</p>
-                  ) : (
-                    <div className="row g-4 text-light">
-  {tripMemories.slice(0, 2).map((memory, memIdx) => (
-    <div className="col-12 col-md-6" key={memIdx}>
-      <div
-        className="card h-100 w-100 bg-secondary bg-opacity-10 border border-secondary rounded shadow-sm text-light memory-card"
-        onClick={() => handleCardClick(memory)}
-        style={{ cursor: "pointer" }}
-      >
-        {/* Images */}
-        {memory.imageUrls?.length > 0 && (
-          <div className="mb-2 d-flex flex-wrap gap-2">
-            {memory.imageUrls.map((imgUrl, i) => (
-              <img
-                key={i}
-                src={imgUrl}
-                alt={`Memory ${i}`}
-                className="rounded"
-                style={{
-                  height: "120px",
-                  width: "auto",
-                  objectFit: "cover",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  maxWidth: "48%",
-                }}
-              />
-            ))}
+              {tripMemories.length === 0 ? (
+                <p className="text-muted">No memories for this trip.</p>
+              ) : (
+                <div className="row g-4 text-light">
+                  {tripMemories.slice(0, 2).map((memory, memIdx) => (
+                    <div className="col-12 col-md-6" key={memIdx}>
+                      <div
+                        className="card h-100 w-100 bg-secondary bg-opacity-10 border border-secondary rounded shadow-sm text-light memory-card"
+                        onClick={() => handleCardClick(memory)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {/* Images */}
+                        {memory.imageUrls?.length > 0 && (
+                          <div className="mb-2 d-flex flex-wrap gap-2">
+                            {memory.imageUrls.map((imgUrl, i) => (
+                              <img
+                                key={i}
+                                src={imgUrl}
+                                alt={`Memory ${i}`}
+                                className="rounded"
+                                style={{
+                                  height: "120px",
+                                  width: "auto",
+                                  objectFit: "cover",
+                                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                                  maxWidth: "48%",
+                                }}
+                              />
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Body */}
+                        <div className="card-body">
+                          <h6 className="card-title text-light">
+                            <i className="bi bi-bookmark-heart me-1"></i>
+                            {memory.title}
+                          </h6>
+                          <p className="card-text small text-light-emphasis">
+                            {memory.description}
+                          </p>
+                          <p className="text-light small mb-1">
+                            <i className="bi bi-calendar-event me-1"></i>
+                            {new Date(memory.createdAt).toLocaleDateString()}
+                          </p>
+                          {memory.audioUrl && (
+                            <audio
+                              controls
+                              src={memory.audioUrl}
+                              className="w-100 mt-2"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
-        )}
+        );
+      })
+    )}
+  </div>
 
-        {/* Body */}
-        <div className="card-body">
-          <h6 className="card-title text-light">{memory.title}</h6>
-          <p className="card-text small text-light-emphasis">{memory.description}</p>
-          <p className="text-light small mb-1">
-            <i className="bi bi-calendar-event"></i>{" "}
-            {new Date(memory.createdAt).toLocaleDateString()}
-          </p>
-          {memory.audioUrl && (
-            <audio controls src={memory.audioUrl} className="w-100 mt-2" />
-          )}
-        </div>
-      </div>
-    </div>
-  ))}
+  {/* Image Modal */}
+  <Modal
+    show={showModal}
+    onHide={() => setShowModal(false)}
+    centered
+    size="lg"
+    className="image-modal"
+  >
+    <Modal.Body className="bg-dark text-center rounded animate-modal">
+      {selectedMemory?.imageUrls?.map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          alt={`Popup ${i}`}
+          className="img-fluid m-2 animate-image"
+          style={{ borderRadius: "10px" }}
+        />
+      ))}
+    </Modal.Body>
+  </Modal>
 </div>
 
-                  )}
-                </div>
-              </div>
-            );
-          })
-        )}
-      </div>
-
-      {/* Image Modal */}
-      <Modal
-        show={showModal}
-        onHide={() => setShowModal(false)}
-        centered
-        size="lg"
-        className="image-modal"
-      >
-        <Modal.Body className="bg-dark text-center rounded animate-modal">
-          {selectedMemory?.imageUrls?.map((img, i) => (
-            <img
-              key={i}
-              src={img}
-              alt={`Popup ${i}`}
-              className="img-fluid m-2 animate-image"
-              style={{ borderRadius: "10px" }}
-            />
-          ))}
-        </Modal.Body>
-      </Modal>
-    </div>
   );
 };
 
