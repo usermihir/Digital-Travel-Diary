@@ -7,9 +7,9 @@ import '../Styles/Register.css';
 const API_BASE = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
