@@ -15,7 +15,6 @@ const menuItems = [
   { id: "home", label: "Home", icon: "bi-house-door" },
   { id: "memories", label: "Memories", icon: "bi-camera" },
   { id: "profile", label: "Profile", icon: "bi-person" },
-  { id: "settings", label: "Settings", icon: "bi-gear" },
 ];
 
 
@@ -25,7 +24,6 @@ const menuItems = [
       home: `/user/${user.id}/dashboard`,
       memories: `/user/${user.id}/memories`,
       profile: `/user/${user.id}/profile`,
-      settings: `/user/${user.id}/settings`,
     };
     navigate(routes[id]);
   };
