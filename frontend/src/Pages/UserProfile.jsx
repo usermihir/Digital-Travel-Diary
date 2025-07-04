@@ -5,6 +5,9 @@ import "../Styles/UserProfile.css";
 import axios from "axios";
 import { FaCamera } from "react-icons/fa";
 
+const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+
+
 function UserProfile() {
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("user")));
   const [image, setImage] = useState(null);
@@ -31,7 +34,7 @@ function UserProfile() {
     try {
       const token = sessionStorage.getItem("token");
       const res = await axios.post(
-        "http://localhost:5000/api/users/upload-profile",
+        `${API_BASE}/api/users/upload-profile`,
         formData,
         {
           headers: {
@@ -72,7 +75,7 @@ function UserProfile() {
           <img
             src={
               user?.profileImage
-                ? `http://localhost:5000/${user.profileImage}`
+                ? `${API_BASE}/${user.profileImage}`
                 : "https://via.placeholder.com/150"
             }
             className="rounded-circle border border-info shadow neon-border"

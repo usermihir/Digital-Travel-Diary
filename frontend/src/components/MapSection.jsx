@@ -9,6 +9,7 @@ import {
 import axios from "axios";
 import "../Styles/MapSection.css";
 import { jwtDecode } from "jwt-decode"; 
+const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
 
 
 const libraries = ["places"];
@@ -119,7 +120,7 @@ const handleSubmit = async (endTrip = false) => {
     // ✅ If starting a new trip, create trip first and get the ObjectId
     if (!currentTripId) {
       const tripRes = await axios.post(
-        "http://localhost:5000/api/trips",
+        `${API_BASE}/api/trips`,
         {
           title: formData.title || "Untitled Trip",
           description: formData.description || "",
@@ -155,7 +156,7 @@ const handleSubmit = async (endTrip = false) => {
     }
 
     // ✅ Save the memory with valid tripId
-    const res = await axios.post("http://localhost:5000/api/memories", data, {
+    const res = await axios.post(`{API_BASE}/api/memories`, data, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -165,13 +166,13 @@ const handleSubmit = async (endTrip = false) => {
     if (endTrip) {
       // ✅ Update the existing trip with new points (optional)
       await axios.put(
-        `http://localhost:5000/api/trips/${tripIdToUse}`,
+        `${API_BASE}/api/trips/${tripIdToUse}`,
         { locations: updatedTrip },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
       // ✅ Refresh and cleanup
-      const tripsRes = await axios.get("http://localhost:5000/api/trips", {
+      const tripsRes = await axios.get(`{API_BASE}/api/trips`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -200,10 +201,10 @@ const handleSubmit = async (endTrip = false) => {
 
     try {
       const [memoriesRes, tripsRes] = await Promise.all([
-        axios.get("http://localhost:5000/api/memories/my", {
+        axios.get(`{API_BASE}/api/memories/my`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
-        axios.get("http://localhost:5000/api/trips", {
+        axios.get(`{API_BASE}/api/trips`, {
           headers: { Authorization: `Bearer ${token}` },
         }),
       ]);

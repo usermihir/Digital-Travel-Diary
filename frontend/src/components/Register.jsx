@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/Register.css';
+const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
     const [name, setName] = useState();
@@ -14,7 +15,7 @@ const Register = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         
-        axios.post( 'http://localhost:5000/api/auth/register', {name, email, password})
+        axios.post( `${API_BASE}/api/auth/register`, {name, email, password})
         .then(result => {
             console.log(result);
             if(result.data === "Already registered"){

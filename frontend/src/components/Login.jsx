@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../Styles/Login.css'; 
 
+const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:5000/api/auth/login", { email, password })
+      .post(`${API_BASE}/api/auth/login`, { email, password })
       .then((res) => {
         console.log("Login Response:", res.data);
         const { token, user } = res.data;

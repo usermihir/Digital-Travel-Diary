@@ -6,6 +6,7 @@ import Memories from "../components/Memories";
 import "../Styles/UserMemories.css";
 
 const OPENCAGE_API_KEY = import.meta.env.VITE_OPENCAGE_API_KEY;
+const {API_BASE} = import.meta.env.VITE_BACKEND_URL;
 
 function UserMemories() {
   const [memories, setMemories] = useState([]);
@@ -50,11 +51,11 @@ function UserMemories() {
       try {
         setLoading(true);
 
-        const memRes = await axios.get("http://localhost:5000/api/memories/my", {
+        const memRes = await axios.get(`${API_BASE}/api/memories/my`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
-        const tripRes = await axios.get("http://localhost:5000/api/trips", {
+        const tripRes = await axios.get(`${API_BASE}/api/trips`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -95,7 +96,7 @@ function UserMemories() {
 
     const token = sessionStorage.getItem("token");
     try {
-      await axios.delete(`http://localhost:5000/api/memories/${memoryId}`, {
+      await axios.delete(`${API_BASE}/api/memories/${memoryId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMemories((prev) => prev.filter((m) => m._id !== memoryId));
