@@ -1,0 +1,60 @@
+/* Neon Text */
+.neon-text {
+  color: #39ff14;
+  text-shadow:
+    0 0 5px #39ff14,
+    0 0 10px #39ff14,
+    0 0 20px #0fa,
+    0 0 30px #0fa,
+    0 0 40px #0fa;
+}
+
+/* Neon Buttons */
+.btn-neon {
+  background: #0fa;
+  color: #000;
+  border: none;
+  box-shadow:
+    0 0 5px #0fa,
+    0 0 10px #0fa,
+    0 0 20px #0fa;
+  transition: all 0.3s ease;
+}
+
+.btn-neon:hover,
+.btn-neon:focus {
+  background: #39ff14;
+  box-shadow:
+    0 0 10px #39ff14,
+    0 0 20px #39ff14,
+    0 0 30px #39ff14;
+  color: #000;
+  outline: none;
+}
+
+/* Glassmorphism background */
+.bg-glass {
+  background: rgba( 255, 255, 255, 0.05 );
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Floating action button container */
+.fab-container button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fab-container button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 8px #39ff14;
+}
+
+/* Modal fade in */
+.modal.fade.show {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}

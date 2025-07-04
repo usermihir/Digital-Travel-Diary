@@ -1,0 +1,54 @@
+.aurora-register-page {
+  background: linear-gradient(135deg, #11002d, #1a034d, #2b0080);
+  background-size: 400% 400%;
+  animation: auroraMove 20s ease infinite;
+  font-family: 'Poppins', sans-serif;
+}
+
+@keyframes auroraMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.glass-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #00ffd5, #ff8cf0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.input-soft {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid #ffffff44;
+  transition: 0.3s ease-in-out;
+}
+
+.input-soft:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 12px #ff9cf3, 0 0 5px #00ffe7;
+  border-color: #ff80d5;
+  color: #fff;
+}
+
+.neon-button {
+  background: linear-gradient(135deg, #00ffe7, #ff87d1);
+  color: #000;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 0 15px #ffb5f8, 0 0 20px #00ffe7;
+  transition: all 0.3s ease-in-out;
+}
+
+.neon-button:hover {
+  background: linear-gradient(135deg, #ff87d1, #00ffe7);
+  box-shadow: 0 0 25px #ffffff, 0 0 30px #00ffe7;
+  color: #111;
+}

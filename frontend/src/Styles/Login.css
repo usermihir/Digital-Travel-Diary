@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  font-family: 'Fira Code', monospace;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.login-container {
+  background: url("https://www.transparenttextures.com/patterns/circuit-board.png");
+  background-size: cover;
+  backdrop-filter: blur(8px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  width: 400px;
+}
+
+.neon-text {
+  color: #00fff7;
+  text-shadow: 0 0 6px #00fff7, 0 0 20px #00fff7;
+}
+
+.neon-label {
+  color: #00e6ff;
+}
+
+.custom-input {
+  background-color: #1a1a2e;
+  color: #fff;
+  border: 1px solid #00f5ff;
+}
+
+.custom-input:focus {
+  background-color: #1a1a2e;
+  color: #fff;
+  border-color: #00fff7;
+  box-shadow: 0 0 10px #00fff7;
+}
+
+.neon-btn {
+  background-color: #00f5ff;
+  color: #000;
+  border: none;
+  box-shadow: 0 0 10px #00f5ff, 0 0 20px #00f5ff;
+  transition: 0.3s;
+}
+
+.neon-btn:hover {
+  background-color: #00fff7;
+  transform: scale(1.05);
+}
+
+.glow-outline-btn {
+  border: 1px solid #00fff7;
+  color: #00fff7;
+  transition: 0.3s;
+}
+
+.glow-outline-btn:hover {
+  background-color: #00fff720;
+  transform: scale(1.05);
+}
+body {
+  background: linear-gradient(135deg, #0b0f33, #22004e, #0c0a3e);
+  color: #ffffff;
+  font-family: 'Fira Code', monospace;
+}
+
+.bg-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(174, 0, 255, 0.3);
+}
+
+.neon-text {
+  color: #ae00ff;
+  text-shadow: 0 0 5px #ae00ff, 0 0 10px #00ffc6;
+}
+
+.neon-btn {
+  background-color: #ae00ff;
+  border: none;
+  color: white;
+  box-shadow: 0 0 8px #ae00ff, 0 0 16px #00ffc6;
+  transition: 0.3s;
+}
+
+.neon-btn:hover {
+  background-color: #00ffc6;
+  color: #0b0f33;
+  box-shadow: 0 0 10px #ffaa00, 0 0 20px #ffaa00;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid #ae00ff;
+  color: #fff;
+}
+
+.form-control:focus {
+  border-color: #00ffc6;
+  box-shadow: 0 0 10px #00ffc6;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
